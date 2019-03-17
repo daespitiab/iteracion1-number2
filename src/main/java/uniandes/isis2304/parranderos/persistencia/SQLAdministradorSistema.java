@@ -1,11 +1,9 @@
 package uniandes.isis2304.parranderos.persistencia;
 
-import java.sql.Date;
-
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-public class SQLReservaCliente {
+public class SQLAdministradorSistema {
 	/* ****************************************************************
 	 * 			Constantes
 	 *****************************************************************/
@@ -31,7 +29,7 @@ public class SQLReservaCliente {
 	 * Constructor
 	 * @param pp - El Manejador de persistencia de la aplicaciÃ³n
 	 */
-	public SQLReservaCliente (PersistenciaHotelAndes pp)
+	public SQLAdministradorSistema (PersistenciaHotelAndes pp)
 	{
 		this.pp = pp;
 	}
@@ -46,10 +44,10 @@ public class SQLReservaCliente {
 	 * @param sedes - El nÃºmero de sedes del bar
 	 * @return El nÃºmero de tuplas insertadas
 	 */
-	public long adicionarSQLReservaCliente (PersistenceManager pm, long idReservaCliente,long numeroPersonas,Date fechaInicio,Date fechaFin ,long idPlanPago,long idCliente)
+	public long adicionarSQLAdministradorSistema(PersistenceManager pm, long numDocu,String tipoDocu,String nombre,String correo,String contraseña)
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaReservaCliente()+ "(idReservaCliente,numeroPersonas,fechaInicio,fechaFin,idPlanPago,idCliente) values (?,?,?,?,?,?)");
-        q.setParameters(idReservaCliente,numeroPersonas,fechaInicio,fechaFin,idPlanPago,idCliente);
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaAdministradoresSistema()+ "(numDocu,tipoDocu,nombre,correo,contraseña) values (?,?,?,?,?)");
+        q.setParameters(numDocu,tipoDocu,nombre,correo,contraseña);
         return (Long) q.executeUnique();
 	}
 
@@ -61,11 +59,12 @@ public class SQLReservaCliente {
 	 * @param idBar - El identificador del bar
 	 * @return El objeto BAR que tiene el identificador dado
 	 */
-	public ReservaCliente darReservaClientePorId (PersistenceManager pm, long idAnaquel) 
+	public AdministradorSistema darAdministradorSistemaPorId (PersistenceManager pm, long idAnaquel) 
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaReservaCliente () + " WHERE id= ? ");
-		q.setResultClass(ReservaCliente.class);
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaAdministradoresSistema () + " WHERE id= ? ");
+		q.setResultClass(AdministradorSistema.class);
 		q.setParameters(idAnaquel);
-		return (ReservaCliente) q.executeUnique();
+		return (AdministradorSistema) q.executeUnique();
 	}
+	
 }

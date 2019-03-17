@@ -1,11 +1,9 @@
 package uniandes.isis2304.parranderos.persistencia;
 
-import java.sql.Date;
-
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-public class SQLReservaCliente {
+public class SQLCuenta {
 	/* ****************************************************************
 	 * 			Constantes
 	 *****************************************************************/
@@ -31,7 +29,7 @@ public class SQLReservaCliente {
 	 * Constructor
 	 * @param pp - El Manejador de persistencia de la aplicación
 	 */
-	public SQLReservaCliente (PersistenciaHotelAndes pp)
+	public SQLCliente (PersistenciaHotelAndes pp)
 	{
 		this.pp = pp;
 	}
@@ -46,10 +44,10 @@ public class SQLReservaCliente {
 	 * @param sedes - El número de sedes del bar
 	 * @return El número de tuplas insertadas
 	 */
-	public long adicionarSQLReservaCliente (PersistenceManager pm, long idReservaCliente,long numeroPersonas,Date fechaInicio,Date fechaFin ,long idPlanPago,long idCliente)
+	public long adicionarSQLCuenta (PersistenceManager pm, long idCuenta,long costoTotal,boolean pazYSalvo,long idReserva)
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaReservaCliente()+ "(idReservaCliente,numeroPersonas,fechaInicio,fechaFin,idPlanPago,idCliente) values (?,?,?,?,?,?)");
-        q.setParameters(idReservaCliente,numeroPersonas,fechaInicio,fechaFin,idPlanPago,idCliente);
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaCuentas()+ "(idCuenta,costoTotal,pazYSalvo,idReserva) values (?,?,?,?)");
+        q.setParameters(idCuenta,costoTotal,pazYSalvo,idReserva);
         return (Long) q.executeUnique();
 	}
 
@@ -61,11 +59,11 @@ public class SQLReservaCliente {
 	 * @param idBar - El identificador del bar
 	 * @return El objeto BAR que tiene el identificador dado
 	 */
-	public ReservaCliente darReservaClientePorId (PersistenceManager pm, long idAnaquel) 
+	public Cuenta darCuentaPorId (PersistenceManager pm, long idAnaquel) 
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaReservaCliente () + " WHERE id= ? ");
-		q.setResultClass(ReservaCliente.class);
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaCuentas () + " WHERE id= ? ");
+		q.setResultClass(Cuenta.class);
 		q.setParameters(idAnaquel);
-		return (ReservaCliente) q.executeUnique();
+		return (Cuenta) q.executeUnique();
 	}
 }
