@@ -3,7 +3,8 @@ package uniandes.isis2304.parranderos.persistencia;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-public class SQLSupermercado {
+public class SQLConsumoServicioSalon {
+
 	/* ****************************************************************
 	 * 			Constantes
 	 *****************************************************************/
@@ -29,7 +30,7 @@ public class SQLSupermercado {
 	 * Constructor
 	 * @param pp - El Manejador de persistencia de la aplicación
 	 */
-	public SQLSupermercado (PersistenciaHotelAndes pp)
+	public SQLConsumoServicioSalon(PersistenciaHotelAndes pp)
 	{
 		this.pp = pp;
 	}
@@ -44,10 +45,10 @@ public class SQLSupermercado {
 	 * @param sedes - El número de sedes del bar
 	 * @return El número de tuplas insertadas
 	 */
-	public long adicionarSQLSupermercado (PersistenceManager pm, long idSupermercado, String nombre)
+	public long adicionarSQLConsumoServicioSalon(PersistenceManager pm, long idServicio, long idCuenta)
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaSupermercado()+ "(idSupermercado,nombre) values (?, ?)");
-        q.setParameters(idSupermercado, nombre);
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaConsumoServicioSalon()+ "(idServicio, idCuenta) values ( ?,?)");
+        q.setParameters(idServicio, idCuenta);
         return (Long) q.executeUnique();
 	}
 
@@ -59,11 +60,11 @@ public class SQLSupermercado {
 	 * @param idBar - El identificador del bar
 	 * @return El objeto BAR que tiene el identificador dado
 	 */
-	public Supermercado darSupermercadoPorId (PersistenceManager pm, long idSupermercado) 
+	public ConsumoServicioSalon darConsumoServicioSalonPorId (PersistenceManager pm, long idServicio, long idCuenta) 
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaSupermercado () + " WHERE id= ? ");
-		q.setResultClass(Supermercado.class);
-		q.setParameters(idSupermercado);
-		return (Supermercado) q.executeUnique();
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaConsumoServicioSalon() + " WHERE idProducto = ? AND idCuenta=?");
+		q.setResultClass(ConsumoServicioSalon.class);
+		q.setParameters(idServicio,idCuenta);
+		return (ConsumoServicioSalon) q.executeUnique();
 	}
 }

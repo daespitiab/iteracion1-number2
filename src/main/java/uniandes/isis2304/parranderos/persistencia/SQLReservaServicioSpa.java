@@ -3,7 +3,8 @@ package uniandes.isis2304.parranderos.persistencia;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-public class SQLSupermercado {
+public class SQLReservaServicioSpa {
+
 	/* ****************************************************************
 	 * 			Constantes
 	 *****************************************************************/
@@ -29,7 +30,7 @@ public class SQLSupermercado {
 	 * Constructor
 	 * @param pp - El Manejador de persistencia de la aplicación
 	 */
-	public SQLSupermercado (PersistenciaHotelAndes pp)
+	public SQLReservaHabitacion (PersistenciaHotelAndes pp)
 	{
 		this.pp = pp;
 	}
@@ -44,10 +45,10 @@ public class SQLSupermercado {
 	 * @param sedes - El número de sedes del bar
 	 * @return El número de tuplas insertadas
 	 */
-	public long adicionarSQLSupermercado (PersistenceManager pm, long idSupermercado, String nombre)
+	public long adicionarSQLReservaServicioSpa (PersistenceManager pm, long idCuenta,long idServicio, String dia, String horaInicio, boolean cargarConsumo)
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaSupermercado()+ "(idSupermercado,nombre) values (?, ?)");
-        q.setParameters(idSupermercado, nombre);
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaReservaServicioSpa()+ "(idCuenta,idServicio,dia,horaInicio, cargarConsumo) values (?,?,?,?,?)");
+        q.setParameters(idCuenta,idServicio,dia,horaInicio,cargarConsumo);
         return (Long) q.executeUnique();
 	}
 
@@ -59,11 +60,11 @@ public class SQLSupermercado {
 	 * @param idBar - El identificador del bar
 	 * @return El objeto BAR que tiene el identificador dado
 	 */
-	public Supermercado darSupermercadoPorId (PersistenceManager pm, long idSupermercado) 
+	public ReservaServicioSpa darReservaServicioSpaPorId (PersistenceManager pm, long idCuenta, long idServicio) 
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaSupermercado () + " WHERE id= ? ");
-		q.setResultClass(Supermercado.class);
-		q.setParameters(idSupermercado);
-		return (Supermercado) q.executeUnique();
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaReservaServicioSpa() + " WHERE id= ? ");
+		q.setResultClass(ReservaServicioSpa.class);
+		q.setParameters(idCuenta, idServicio);
+		return (ReservaServicioSpa) q.executeUnique();
 	}
 }

@@ -3,7 +3,8 @@ package uniandes.isis2304.parranderos.persistencia;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-public class SQLSupermercado {
+public class SQLConsumoBar {
+	
 	/* ****************************************************************
 	 * 			Constantes
 	 *****************************************************************/
@@ -29,25 +30,23 @@ public class SQLSupermercado {
 	 * Constructor
 	 * @param pp - El Manejador de persistencia de la aplicación
 	 */
-	public SQLSupermercado (PersistenciaHotelAndes pp)
+	public SQLConsumoBar(PersistenciaHotelAndes pp)
 	{
 		this.pp = pp;
 	}
 	
 	/**
-	 * Crea y ejecuta la sentencia SQL para adicionar un BAR a la base de datos de Parranderos
+	 * Crea y ejecuta la sentencia SQL para adicionar un CONSUMO_BAR a la base de datos de Hotelandes
 	 * @param pm - El manejador de persistencia
-	 * @param idBar - El identificador del bar
-	 * @param nombre - El nombre del bar
-	 * @param ciudad - La ciudad del bar
-	 * @param presupuesto - El presupuesto del bar (ALTO, MEDIO, BAJO)
-	 * @param sedes - El número de sedes del bar
+	 * @param idProducto - El identificador del bar
+	 * @param idCuenta - El nombre del bar
+	 * @param cargarConsumo - La ciudad del bar
 	 * @return El número de tuplas insertadas
 	 */
-	public long adicionarSQLSupermercado (PersistenceManager pm, long idSupermercado, String nombre)
+	public long adicionarSQLConsumoRestaurante (PersistenceManager pm, long idProducto, long idCuenta, boolean cargarConsumo)
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaSupermercado()+ "(idSupermercado,nombre) values (?, ?)");
-        q.setParameters(idSupermercado, nombre);
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaConsumoRestaurante()+ "(idProducto, idCuenta, cargarConsumo) values ( ?, ?, ?)");
+        q.setParameters(idProducto, idCuenta, cargarConsumo);
         return (Long) q.executeUnique();
 	}
 
@@ -59,11 +58,12 @@ public class SQLSupermercado {
 	 * @param idBar - El identificador del bar
 	 * @return El objeto BAR que tiene el identificador dado
 	 */
-	public Supermercado darSupermercadoPorId (PersistenceManager pm, long idSupermercado) 
+	public ConsumoBar darConsumoBarPorId (PersistenceManager pm, long idProducto, long idCuenta) 
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaSupermercado () + " WHERE id= ? ");
-		q.setResultClass(Supermercado.class);
-		q.setParameters(idSupermercado);
-		return (Supermercado) q.executeUnique();
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaConsumoBar() + " WHERE idProducto = ? AND idCuenta=?");
+		q.setResultClass(ConsumoBar.class);
+		q.setParameters(idProducto,idCuenta);
+		return (ConsumoBar) q.executeUnique();
 	}
+
 }

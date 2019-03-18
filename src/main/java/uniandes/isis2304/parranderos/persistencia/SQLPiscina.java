@@ -3,7 +3,9 @@ package uniandes.isis2304.parranderos.persistencia;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-public class SQLSupermercado {
+public class SQLPiscina {
+	
+
 	/* ****************************************************************
 	 * 			Constantes
 	 *****************************************************************/
@@ -29,41 +31,44 @@ public class SQLSupermercado {
 	 * Constructor
 	 * @param pp - El Manejador de persistencia de la aplicación
 	 */
-	public SQLSupermercado (PersistenciaHotelAndes pp)
+	public  SQLPiscina(PersistenciaHotelAndes pp)
 	{
 		this.pp = pp;
 	}
 	
 	/**
-	 * Crea y ejecuta la sentencia SQL para adicionar un BAR a la base de datos de Parranderos
+	 * Crea y ejecuta la sentencia SQL para adicionar una PISCINA a la base de datos de Hotelandes
 	 * @param pm - El manejador de persistencia
-	 * @param idBar - El identificador del bar
-	 * @param nombre - El nombre del bar
-	 * @param ciudad - La ciudad del bar
-	 * @param presupuesto - El presupuesto del bar (ALTO, MEDIO, BAJO)
-	 * @param sedes - El número de sedes del bar
+	 * @param idPiscina - El identificador de la piscina
+	 * @param capacidad - La capacidad de la piscina
+	 * @param profundidad - La profundidad de la piscina
+	 * @param costo - el costo de la piscina
+	 * @param incluido - indica si el costo esta incluido
+	 * @param horaInicio - La hora a la que inicia el servicio de la piscina
+	 *  @param horaFin - La hora a la que finaliza el servicio de la piscina
 	 * @return El número de tuplas insertadas
 	 */
-	public long adicionarSQLSupermercado (PersistenceManager pm, long idSupermercado, String nombre)
+	public long adicionarSQLPiscina (PersistenceManager pm, long idPiscina, int capacidad, double profundidad, double costo, boolean incluido, String horaInicio, String horaFin  )
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaSupermercado()+ "(idSupermercado,nombre) values (?, ?)");
-        q.setParameters(idSupermercado, nombre);
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaTiendas()+ "(idGimnasio, capacidad, profundidad, costo, incluido, horaInicio, horaFin) values (?,?,?,?,?,?,?)");
+        q.setParameters(idPiscina, capacidad, profundidad, costo, incluido, horaInicio, horaFin);
         return (Long) q.executeUnique();
 	}
 
 
 	/**
-	 * Crea y ejecuta la sentencia SQL para encontrar la información de UN BAR de la 
+	 * Crea y ejecuta la sentencia SQL para encontrar la información de un GIMNASIO de la 
 	 * base de datos de Parranderos, por su identificador
 	 * @param pm - El manejador de persistencia
 	 * @param idBar - El identificador del bar
 	 * @return El objeto BAR que tiene el identificador dado
 	 */
-	public Supermercado darSupermercadoPorId (PersistenceManager pm, long idSupermercado) 
+	public Piscina darPiscinaPorId (PersistenceManager pm, long idPiscina) 
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaSupermercado () + " WHERE id= ? ");
-		q.setResultClass(Supermercado.class);
-		q.setParameters(idSupermercado);
-		return (Supermercado) q.executeUnique();
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaPiscinas() + " WHERE id= ? ");
+		q.setResultClass(Piscina.class);
+		q.setParameters(idPiscina);
+		return (Piscina) q.executeUnique();
 	}
+
 }

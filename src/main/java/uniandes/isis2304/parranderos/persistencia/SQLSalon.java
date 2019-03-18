@@ -3,7 +3,8 @@ package uniandes.isis2304.parranderos.persistencia;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-public class SQLSupermercado {
+public class SQLSalon {
+
 	/* ****************************************************************
 	 * 			Constantes
 	 *****************************************************************/
@@ -29,7 +30,7 @@ public class SQLSupermercado {
 	 * Constructor
 	 * @param pp - El Manejador de persistencia de la aplicación
 	 */
-	public SQLSupermercado (PersistenciaHotelAndes pp)
+	public  SQLSalon(PersistenciaHotelAndes pp)
 	{
 		this.pp = pp;
 	}
@@ -44,10 +45,10 @@ public class SQLSupermercado {
 	 * @param sedes - El número de sedes del bar
 	 * @return El número de tuplas insertadas
 	 */
-	public long adicionarSQLSupermercado (PersistenceManager pm, long idSupermercado, String nombre)
+	public long adicionarSQLSalon (PersistenceManager pm, long idSalon, String nombre, int capacidad, long idTipo )
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaSupermercado()+ "(idSupermercado,nombre) values (?, ?)");
-        q.setParameters(idSupermercado, nombre);
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaTiendas()+ "(idTienda, nombre, capcidad, idTipo) values (?,?,?,?)");
+        q.setParameters(idSalon, nombre, capacidad, idTipo);
         return (Long) q.executeUnique();
 	}
 
@@ -59,11 +60,11 @@ public class SQLSupermercado {
 	 * @param idBar - El identificador del bar
 	 * @return El objeto BAR que tiene el identificador dado
 	 */
-	public Supermercado darSupermercadoPorId (PersistenceManager pm, long idSupermercado) 
+	public Salon darSalonPorId (PersistenceManager pm, long idSalon) 
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaSupermercado () + " WHERE id= ? ");
-		q.setResultClass(Supermercado.class);
-		q.setParameters(idSupermercado);
-		return (Supermercado) q.executeUnique();
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaTiendas() + " WHERE id= ? ");
+		q.setResultClass(Salon.class);
+		q.setParameters(idSalon);
+		return (Salon) q.executeUnique();
 	}
 }

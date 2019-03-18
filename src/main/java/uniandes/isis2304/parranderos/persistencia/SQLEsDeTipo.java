@@ -3,7 +3,8 @@ package uniandes.isis2304.parranderos.persistencia;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-public class SQLSupermercado {
+public class SQLEsDeTipo {
+
 	/* ****************************************************************
 	 * 			Constantes
 	 *****************************************************************/
@@ -29,7 +30,7 @@ public class SQLSupermercado {
 	 * Constructor
 	 * @param pp - El Manejador de persistencia de la aplicación
 	 */
-	public SQLSupermercado (PersistenciaHotelAndes pp)
+	public  SQLEsDeTipo(PersistenciaHotelAndes pp)
 	{
 		this.pp = pp;
 	}
@@ -44,10 +45,10 @@ public class SQLSupermercado {
 	 * @param sedes - El número de sedes del bar
 	 * @return El número de tuplas insertadas
 	 */
-	public long adicionarSQLSupermercado (PersistenceManager pm, long idSupermercado, String nombre)
+	public long adicionarSQLEsDeTipo(PersistenceManager pm, long idTienda,String nombre )
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaSupermercado()+ "(idSupermercado,nombre) values (?, ?)");
-        q.setParameters(idSupermercado, nombre);
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaTiendas()+ "(idTienda,nombre) values (?,?)");
+        q.setParameters(idTienda, nombre);
         return (Long) q.executeUnique();
 	}
 
@@ -59,11 +60,12 @@ public class SQLSupermercado {
 	 * @param idBar - El identificador del bar
 	 * @return El objeto BAR que tiene el identificador dado
 	 */
-	public Supermercado darSupermercadoPorId (PersistenceManager pm, long idSupermercado) 
+	public EsDeTipo darEsDeTipoId (PersistenceManager pm, long idTienda) 
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaSupermercado () + " WHERE id= ? ");
-		q.setResultClass(Supermercado.class);
-		q.setParameters(idSupermercado);
-		return (Supermercado) q.executeUnique();
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaTiendas() + " WHERE id= ? ");
+		q.setResultClass(EsDeTipo.class);
+		q.setParameters(idTienda);
+		return (EsDeTipo) q.executeUnique();
 	}
+	
 }

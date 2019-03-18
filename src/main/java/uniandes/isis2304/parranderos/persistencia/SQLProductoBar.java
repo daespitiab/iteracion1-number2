@@ -3,7 +3,8 @@ package uniandes.isis2304.parranderos.persistencia;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-public class SQLSupermercado {
+public class SQLProductoBar {
+	
 	/* ****************************************************************
 	 * 			Constantes
 	 *****************************************************************/
@@ -29,41 +30,40 @@ public class SQLSupermercado {
 	 * Constructor
 	 * @param pp - El Manejador de persistencia de la aplicación
 	 */
-	public SQLSupermercado (PersistenciaHotelAndes pp)
+	public SQLProductoBar(PersistenciaHotelAndes pp)
 	{
 		this.pp = pp;
 	}
 	
 	/**
-	 * Crea y ejecuta la sentencia SQL para adicionar un BAR a la base de datos de Parranderos
+	 * Crea y ejecuta la sentencia SQL para adicionar un BAR a la base de datos de hotelandes
 	 * @param pm - El manejador de persistencia
-	 * @param idBar - El identificador del bar
-	 * @param nombre - El nombre del bar
-	 * @param ciudad - La ciudad del bar
-	 * @param presupuesto - El presupuesto del bar (ALTO, MEDIO, BAJO)
-	 * @param sedes - El número de sedes del bar
+	 * @param idProductoBar - El identificador del bar
+	 * @param nombre - El nombre del producto del bar
+	 * @param costo - El costo del producto del bar
+	 * @param idBar - El id del bar dueño del producto
 	 * @return El número de tuplas insertadas
 	 */
-	public long adicionarSQLSupermercado (PersistenceManager pm, long idSupermercado, String nombre)
+	public long adicionarProductoBar (PersistenceManager pm, long idProductoBar, String nombre, long costo,long idBar)
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaSupermercado()+ "(idSupermercado,nombre) values (?, ?)");
-        q.setParameters(idSupermercado, nombre);
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaProductosBar()+ "(idProductoBar, nombre, costo, idBar) values (?, ?, ?, ?)");
+        q.setParameters(idProductoBar, nombre, costo, idBar);
         return (Long) q.executeUnique();
 	}
 
 
 	/**
-	 * Crea y ejecuta la sentencia SQL para encontrar la información de UN BAR de la 
-	 * base de datos de Parranderos, por su identificador
+	 * Crea y ejecuta la sentencia SQL para encontrar la información de UN PRODUCTO_BAR de la 
+	 * base de datos de Hotelandes, por su identificador
 	 * @param pm - El manejador de persistencia
-	 * @param idBar - El identificador del bar
-	 * @return El objeto BAR que tiene el identificador dado
+	 * @param idProductoBar - El identificador del producto
+	 * @return El objeto PRODUCTO_BAR que tiene el identificador dado
 	 */
-	public Supermercado darSupermercadoPorId (PersistenceManager pm, long idSupermercado) 
+	public ProductoBar darProductoBarPorId(PersistenceManager pm, long idProductoBar) 
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaSupermercado () + " WHERE id= ? ");
-		q.setResultClass(Supermercado.class);
-		q.setParameters(idSupermercado);
-		return (Supermercado) q.executeUnique();
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaProductosBar() + " WHERE id = ?");
+		q.setResultClass(ProductoBar.class);
+		q.setParameters(idProductoBar);
+		return (ProductoBar) q.executeUnique();
 	}
 }

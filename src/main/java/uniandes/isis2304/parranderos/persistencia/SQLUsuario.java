@@ -44,10 +44,10 @@ public class SQLUsuario {
 	 * @param sedes - El nÃºmero de sedes del bar
 	 * @return El nÃºmero de tuplas insertadas
 	 */
-	public long adicionarSQLUsuario(PersistenceManager pm, long numDocu,String tipoDocu,String nombre,String correo,String contraseña,long idRol)
+	public long adicionarSQLUsuario(PersistenceManager pm, long numDocu,String tipoDocu,String nombre,String correo,String contraseï¿½a,long idRol)
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaUsuarios()+ "(numDocu,tipoDocu,nombre,correo,contraseña,idRol) values (?,?,?,?,?,?)");
-        q.setParameters(numDocu,tipoDocu,nombre,correo,contraseña,idRol);
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaUsuarios()+ "(numDocu,tipoDocu,nombre,correo,contraseï¿½a,idRol) values (?,?,?,?,?,?)");
+        q.setParameters(numDocu,tipoDocu,nombre,correo,contraseï¿½a,idRol);
         return (Long) q.executeUnique();
 	}
 
@@ -59,7 +59,7 @@ public class SQLUsuario {
 	 * @param idBar - El identificador del bar
 	 * @return El objeto BAR que tiene el identificador dado
 	 */
-	public Usuario darGerentePorId (PersistenceManager pm, long idAnaquel) 
+	public Usuario darUsuarioPorId (PersistenceManager pm, long idAnaquel) 
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaUsuarios () + " WHERE id= ? ");
 		q.setResultClass(Usuario.class);
