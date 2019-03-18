@@ -1275,180 +1275,180 @@ public class PersistenciaHotelAndes
             pm.close();
         }
 	}
-	public  Recepcionista adicionarRecepcionista(long numDocu, String tipoDocu, String nombre,String correo,String contra)  
-	{
-		PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx=pm.currentTransaction();
-        try
-        {
-            tx.begin();            
-            long idBebida = nextval ();
-            long tuplasInsertadas = sqlRecepcionista.adicionarSQLRecepcionista(pm, numDocu, tipoDocu, nombre, correo, contra);
-            tx.commit();
-            
-            log.trace ("Inserción bebida: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
-            return new Recepcionista (numDocu, tipoDocu, nombre, correo, contra);
-        }
-        catch (Exception e)
-        {
-//        	e.printStackTrace();
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-        	return null;
-        }
-        finally
-        {
-            if (tx.isActive())
-            {
-                tx.rollback();
-            }
-            pm.close();
-        }
-	}
-	public  AdministradorSistema adicionarAdministradorSistema(long numDocu, String tipoDocu, String nombre,String correo,String contra)  
-	{
-		PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx=pm.currentTransaction();
-        try
-        {
-            tx.begin();            
-            long idBebida = nextval ();
-            long tuplasInsertadas = sqlAdministradorSistema.adicionarSQLAdministradorSistema(pm, numDocu, tipoDocu, nombre, correo, contra);
-            tx.commit();
-            
-            log.trace ("Inserción bebida: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
-            return new AdministradorSistema (numDocu, tipoDocu, nombre, correo, contra);
-        }
-        catch (Exception e)
-        {
-//        	e.printStackTrace();
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-        	return null;
-        }
-        finally
-        {
-            if (tx.isActive())
-            {
-                tx.rollback();
-            }
-            pm.close();
-        }
-	}
-	public  Empleado adicionarEmpleado(String nombre, long idTipoBebida, int gradoAlcohol) 
-	{
-		PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx=pm.currentTransaction();
-        try
-        {
-            tx.begin();            
-            long idBebida = nextval ();
-            long tuplasInsertadas = sqlBebida.adicionarBebida(pm, idBebida, nombre, idTipoBebida, gradoAlcohol);
-            tx.commit();
-            
-            log.trace ("Inserción bebida: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
-            return new Bebida (idBebida,nombre, idTipoBebida, gradoAlcohol);
-        }
-        catch (Exception e)
-        {
-//        	e.printStackTrace();
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-        	return null;
-        }
-        finally
-        {
-            if (tx.isActive())
-            {
-                tx.rollback();
-            }
-            pm.close();
-        }
-	}
-	public  Gerente adicionarGerente(String nombre, long idTipoBebida, int gradoAlcohol) 
-	{
-		PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx=pm.currentTransaction();
-        try
-        {
-            tx.begin();            
-            long idBebida = nextval ();
-            long tuplasInsertadas = sqlBebida.adicionarBebida(pm, idBebida, nombre, idTipoBebida, gradoAlcohol);
-            tx.commit();
-            
-            log.trace ("Inserción bebida: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
-            return new Bebida (idBebida,nombre, idTipoBebida, gradoAlcohol);
-        }
-        catch (Exception e)
-        {
-//        	e.printStackTrace();
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-        	return null;
-        }
-        finally
-        {
-            if (tx.isActive())
-            {
-                tx.rollback();
-            }
-            pm.close();
-        }
-	}
-	public  Usuario adicionarUsuario(String nombre, long idTipoBebida, int gradoAlcohol) 
-	{
-		PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx=pm.currentTransaction();
-        try
-        {
-            tx.begin();            
-            long idBebida = nextval ();
-            long tuplasInsertadas = sqlBebida.adicionarBebida(pm, idBebida, nombre, idTipoBebida, gradoAlcohol);
-            tx.commit();
-            
-            log.trace ("Inserción bebida: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
-            return new Bebida (idBebida,nombre, idTipoBebida, gradoAlcohol);
-        }
-        catch (Exception e)
-        {
-//        	e.printStackTrace();
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-        	return null;
-        }
-        finally
-        {
-            if (tx.isActive())
-            {
-                tx.rollback();
-            }
-            pm.close();
-        }
-	}
-	public  RolUsuario adicionarRolUsuario(String nombre, long idTipoBebida, int gradoAlcohol) 
-	{
-		PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx=pm.currentTransaction();
-        try
-        {
-            tx.begin();            
-            long idBebida = nextval ();
-            long tuplasInsertadas = sqlBebida.adicionarBebida(pm, idBebida, nombre, idTipoBebida, gradoAlcohol);
-            tx.commit();
-            
-            log.trace ("Inserción bebida: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
-            return new Bebida (idBebida,nombre, idTipoBebida, gradoAlcohol);
-        }
-        catch (Exception e)
-        {
-//        	e.printStackTrace();
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-        	return null;
-        }
-        finally
-        {
-            if (tx.isActive())
-            {
-                tx.rollback();
-            }
-            pm.close();
-        }
-	}
+//	public  Recepcionista adicionarRecepcionista(long numDocu, String tipoDocu, String nombre,String correo,String contra)  
+//	{
+//		PersistenceManager pm = pmf.getPersistenceManager();
+//        Transaction tx=pm.currentTransaction();
+//        try
+//        {
+//            tx.begin();            
+//            long idBebida = nextval ();
+//            long tuplasInsertadas = sqlRecepcionista.adicionarSQLRecepcionista(pm, numDocu, tipoDocu, nombre, correo, contra);
+//            tx.commit();
+//            
+//            log.trace ("Inserción bebida: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
+//            return new Recepcionista (numDocu, tipoDocu, nombre, correo, contra);
+//        }
+//        catch (Exception e)
+//        {
+////        	e.printStackTrace();
+//        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+//        	return null;
+//        }
+//        finally
+//        {
+//            if (tx.isActive())
+//            {
+//                tx.rollback();
+//            }
+//            pm.close();
+//        }
+//	}
+//	public  AdministradorSistema adicionarAdministradorSistema(long numDocu, String tipoDocu, String nombre,String correo,String contra)  
+//	{
+//		PersistenceManager pm = pmf.getPersistenceManager();
+//        Transaction tx=pm.currentTransaction();
+//        try
+//        {
+//            tx.begin();            
+//            long idBebida = nextval ();
+//            long tuplasInsertadas = sqlAdministradorSistema.adicionarSQLAdministradorSistema(pm, numDocu, tipoDocu, nombre, correo, contra);
+//            tx.commit();
+//            
+//            log.trace ("Inserción bebida: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
+//            return new AdministradorSistema (numDocu, tipoDocu, nombre, correo, contra);
+//        }
+//        catch (Exception e)
+//        {
+////        	e.printStackTrace();
+//        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+//        	return null;
+//        }
+//        finally
+//        {
+//            if (tx.isActive())
+//            {
+//                tx.rollback();
+//            }
+//            pm.close();
+//        }
+//	}
+//	public  Empleado adicionarEmpleado(long numDocu, String tipoDocu, String nombre,String correo,String contra)  
+//	{
+//		PersistenceManager pm = pmf.getPersistenceManager();
+//        Transaction tx=pm.currentTransaction();
+//        try
+//        {
+//            tx.begin();            
+//            long idBebida = nextval ();
+//            long tuplasInsertadas = sqlEmpleado.adicionarSQLEmpleado(pm, numDocu, tipoDocu, nombre, correo, contra);
+//            tx.commit();
+//            
+//            log.trace ("Inserción bebida: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
+//            return new Empleado (numDocu, tipoDocu, nombre, correo, contra);
+//        }
+//        catch (Exception e)
+//        {
+////        	e.printStackTrace();
+//        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+//        	return null;
+//        }
+//        finally
+//        {
+//            if (tx.isActive())
+//            {
+//                tx.rollback();
+//            }
+//            pm.close();
+//        }
+//	}
+//	public  Gerente adicionarGerente(String nombre, long idTipoBebida, int gradoAlcohol) 
+//	{
+//		PersistenceManager pm = pmf.getPersistenceManager();
+//        Transaction tx=pm.currentTransaction();
+//        try
+//        {
+//            tx.begin();            
+//            long idBebida = nextval ();
+//            long tuplasInsertadas = sqlBebida.adicionarBebida(pm, idBebida, nombre, idTipoBebida, gradoAlcohol);
+//            tx.commit();
+//            
+//            log.trace ("Inserción bebida: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
+//            return new Bebida (idBebida,nombre, idTipoBebida, gradoAlcohol);
+//        }
+//        catch (Exception e)
+//        {
+////        	e.printStackTrace();
+//        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+//        	return null;
+//        }
+//        finally
+//        {
+//            if (tx.isActive())
+//            {
+//                tx.rollback();
+//            }
+//            pm.close();
+//        }
+//	}
+//	public  Usuario adicionarUsuario(String nombre, long idTipoBebida, int gradoAlcohol) 
+//	{
+//		PersistenceManager pm = pmf.getPersistenceManager();
+//        Transaction tx=pm.currentTransaction();
+//        try
+//        {
+//            tx.begin();            
+//            long idBebida = nextval ();
+//            long tuplasInsertadas = sqlBebida.adicionarBebida(pm, idBebida, nombre, idTipoBebida, gradoAlcohol);
+//            tx.commit();
+//            
+//            log.trace ("Inserción bebida: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
+//            return new Bebida (idBebida,nombre, idTipoBebida, gradoAlcohol);
+//        }
+//        catch (Exception e)
+//        {
+////        	e.printStackTrace();
+//        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+//        	return null;
+//        }
+//        finally
+//        {
+//            if (tx.isActive())
+//            {
+//                tx.rollback();
+//            }
+//            pm.close();
+//        }
+//	}
+//	public  RolUsuario adicionarRolUsuario(String nombre, long idTipoBebida, int gradoAlcohol) 
+//	{
+//		PersistenceManager pm = pmf.getPersistenceManager();
+//        Transaction tx=pm.currentTransaction();
+//        try
+//        {
+//            tx.begin();            
+//            long idBebida = nextval ();
+//            long tuplasInsertadas = sqlBebida.adicionarBebida(pm, idBebida, nombre, idTipoBebida, gradoAlcohol);
+//            tx.commit();
+//            
+//            log.trace ("Inserción bebida: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
+//            return new Bebida (idBebida,nombre, idTipoBebida, gradoAlcohol);
+//        }
+//        catch (Exception e)
+//        {
+////        	e.printStackTrace();
+//        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+//        	return null;
+//        }
+//        finally
+//        {
+//            if (tx.isActive())
+//            {
+//                tx.rollback();
+//            }
+//            pm.close();
+//        }
+//	}
 	/**
 	 * Método que consulta todas las tuplas en la tabla Bebida que tienen el nombre dado
 	 * @param nombreBebida - El nombre de la bebida
