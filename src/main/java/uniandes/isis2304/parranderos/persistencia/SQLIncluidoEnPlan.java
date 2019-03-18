@@ -2,10 +2,10 @@ package uniandes.isis2304.parranderos.persistencia;
 
 import java.util.List;
 
+
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-import uniandes.isis2304.parranderos.negocio.Gustan;
 
 class SQLIncluidoEnPlan 
 {
@@ -57,11 +57,11 @@ class SQLIncluidoEnPlan
 	 * @param pm - El manejador de persistencia
 	 * @return Una lista de objetos GUSTAN
 	 */
-	public List<Gustan> darIncluidosEnPlan (PersistenceManager pm)
-	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaIncluidoEnPlan ());
-		q.setResultClass(IncluidoEnPlan.class);
-		List<IncluidoEnPlan> resp = (List<IncluidoEnPlan>) q.execute();
-		return resp;
-	}
+//	public List<Gustan> darIncluidosEnPlan (PersistenceManager pm)
+//	{
+//		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaIncluidoEnPlan ());
+//		q.setResultClass(IncluidoEnPlan.class);
+//		List<IncluidoEnPlan> resp = (List<IncluidoEnPlan>) q.execute();
+//		return resp;
+//	}
 }

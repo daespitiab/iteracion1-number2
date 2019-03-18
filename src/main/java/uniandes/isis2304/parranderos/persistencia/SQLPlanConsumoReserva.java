@@ -59,11 +59,11 @@ public class SQLPlanConsumoReserva {
 	 * @param idBar - El identificador del bar
 	 * @return El objeto BAR que tiene el identificador dado
 	 */
-	public PlanConsumoReserva darPlanConsumoReservaPorId (PersistenceManager pm, long idProducto, long idCuenta) 
-	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaPlanesConsumoReserva() + " WHERE idProducto = ? AND idCuenta=?");
-		q.setResultClass(PlanConsumoReserva.class);
-		q.setParameters(idProducto,idCuenta);
-		return (PlanConsumoReserva) q.executeUnique();
-	}
+//	public PlanConsumoReserva darPlanConsumoReservaPorId (PersistenceManager pm, long idProducto, long idCuenta) 
+//	{
+//		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaPlanesConsumoReserva() + " WHERE idProducto = ? AND idCuenta=?");
+//		q.setResultClass(PlanConsumoReserva.class);
+//		q.setParameters(idProducto,idCuenta);
+//		return (PlanConsumoReserva) q.executeUnique();
+//	}
 }

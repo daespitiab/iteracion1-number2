@@ -59,12 +59,12 @@ public class SQLRolUsuario {
 	 * @param idBar - El identificador del bar
 	 * @return El objeto BAR que tiene el identificador dado
 	 */
-	public RolUsuario darGerentePorId (PersistenceManager pm, long idAnaquel) 
-	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaRolesUsuario () + " WHERE id= ? ");
-		q.setResultClass(RolUsuario.class);
-		q.setParameters(idAnaquel);
-		return (RolUsuario) q.executeUnique();
-	}
-	
+//	public RolUsuario darGerentePorId (PersistenceManager pm, long idAnaquel) 
+//	{
+//		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaRolesUsuario () + " WHERE id= ? ");
+//		q.setResultClass(RolUsuario.class);
+//		q.setParameters(idAnaquel);
+//		return (RolUsuario) q.executeUnique();
+//	}
+//	
 }

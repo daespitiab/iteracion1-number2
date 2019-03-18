@@ -59,12 +59,12 @@ public class SQLAdministradorSistema {
 	 * @param idBar - El identificador del bar
 	 * @return El objeto BAR que tiene el identificador dado
 	 */
-	public AdministradorSistema darAdministradorSistemaPorId (PersistenceManager pm, long idAnaquel) 
-	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaAdministradoresSistema () + " WHERE id= ? ");
-		q.setResultClass(AdministradorSistema.class);
-		q.setParameters(idAnaquel);
-		return (AdministradorSistema) q.executeUnique();
-	}
-	
+//	public AdministradorSistema darAdministradorSistemaPorId (PersistenceManager pm, long idAnaquel) 
+//	{
+//		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaAdministradoresSistema () + " WHERE id= ? ");
+//		q.setResultClass(AdministradorSistema.class);
+//		q.setParameters(idAnaquel);
+//		return (AdministradorSistema) q.executeUnique();
+//	}
+//	
 }

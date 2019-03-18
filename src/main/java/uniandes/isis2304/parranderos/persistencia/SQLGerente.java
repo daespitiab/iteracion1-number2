@@ -59,12 +59,12 @@ public class SQLGerente {
 	 * @param idBar - El identificador del bar
 	 * @return El objeto BAR que tiene el identificador dado
 	 */
-	public Gerente darGerentePorId (PersistenceManager pm, long idAnaquel) 
-	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaGerentes () + " WHERE id= ? ");
-		q.setResultClass(Gerente.class);
-		q.setParameters(idAnaquel);
-		return (Gerente) q.executeUnique();
-	}
-	
+//	public Gerente darGerentePorId (PersistenceManager pm, long idAnaquel) 
+//	{
+//		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaGerentes () + " WHERE id= ? ");
+//		q.setResultClass(Gerente.class);
+//		q.setParameters(idAnaquel);
+//		return (Gerente) q.executeUnique();
+//	}
+//	
 }

@@ -64,12 +64,12 @@ public class SQLProductoRestaurante {
 	 * @param idBar - El identificador del bar
 	 * @return El objeto BAR que tiene el identificador dado
 	 */
-	public ProductoRestaurante darProductoRestaurantePorId (PersistenceManager pm, long idProductoRestaurante) 
-	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaProductoRestaurante () + " WHERE id = ?");
-		q.setResultClass(ProductoRestaurante.class);
-		q.setParameters(idProductoRestaurante);
-		return (ProductoRestaurante) q.executeUnique();
-	}
+//	public ProductoRestaurante darProductoRestaurantePorId (PersistenceManager pm, long idProductoRestaurante) 
+//	{
+//		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaProductoRestaurante () + " WHERE id = ?");
+//		q.setResultClass(ProductoRestaurante.class);
+//		q.setParameters(idProductoRestaurante);
+//		return (ProductoRestaurante) q.executeUnique();
+//	}
 
 }
