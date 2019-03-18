@@ -59,11 +59,11 @@ public class SQLCuenta {
 	 * @param idBar - El identificador del bar
 	 * @return El objeto BAR que tiene el identificador dado
 	 */
-	public Cuenta darCuentaPorId (PersistenceManager pm, long idAnaquel) 
-	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaCuentas () + " WHERE id= ? ");
-		q.setResultClass(Cuenta.class);
-		q.setParameters(idAnaquel);
-		return (Cuenta) q.executeUnique();
-	}
+//	public Cuenta darCuentaPorId (PersistenceManager pm, long idAnaquel) 
+//	{
+//		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaCuentas () + " WHERE id= ? ");
+//		q.setResultClass(Cuenta.class);
+//		q.setParameters(idAnaquel);
+//		return (Cuenta) q.executeUnique();
+//	}
 }

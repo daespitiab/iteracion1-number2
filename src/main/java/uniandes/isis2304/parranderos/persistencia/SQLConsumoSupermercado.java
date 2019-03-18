@@ -59,12 +59,12 @@ public class SQLConsumoSupermercado {
 	 * @param idBar - El identificador del bar
 	 * @return El objeto BAR que tiene el identificador dado
 	 */
-	public ConsumoSupermercado darConsumoSupermercadoPorId (PersistenceManager pm, long idProducto, long idCuenta) 
-	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaConsumoSupermercado() + " WHERE idProducto = ? AND idCuenta=?");
-		q.setResultClass(ConsumoSupermercado.class);
-		q.setParameters(idProducto,idCuenta);
-		return (ConsumoSupermercado) q.executeUnique();
-	}
+//	public ConsumoSupermercado darConsumoSupermercadoPorId (PersistenceManager pm, long idProducto, long idCuenta) 
+//	{
+//		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaConsumoSupermercado() + " WHERE idProducto = ? AND idCuenta=?");
+//		q.setResultClass(ConsumoSupermercado.class);
+//		q.setParameters(idProducto,idCuenta);
+//		return (ConsumoSupermercado) q.executeUnique();
+//	}
 
 }

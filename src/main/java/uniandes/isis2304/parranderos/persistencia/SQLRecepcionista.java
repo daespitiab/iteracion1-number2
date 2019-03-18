@@ -59,11 +59,11 @@ public class SQLRecepcionista {
 	 * @param idBar - El identificador del bar
 	 * @return El objeto BAR que tiene el identificador dado
 	 */
-	public Recepcionista darRecepecionistaPorId (PersistenceManager pm, long idAnaquel) 
-	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaClientes () + " WHERE id= ? ");
-		q.setResultClass(Recepcionista.class);
-		q.setParameters(idAnaquel);
-		return (Recepcionista) q.executeUnique();
-	}
+//	public Recepcionista darRecepecionistaPorId (PersistenceManager pm, long idAnaquel) 
+//	{
+//		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaClientes () + " WHERE id= ? ");
+//		q.setResultClass(Recepcionista.class);
+//		q.setParameters(idAnaquel);
+//		return (Recepcionista) q.executeUnique();
+//	}
 }

@@ -61,11 +61,11 @@ public class SQLReservaHabitacion {
 	 * @param idBar - El identificador del bar
 	 * @return El objeto BAR que tiene el identificador dado
 	 */
-	public ReservaHabitacion darReservaHabitacionPorId (PersistenceManager pm, long idAnaquel) 
-	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaReservaHabitacion () + " WHERE id= ? ");
-		q.setResultClass(ReservaHabitacion.class);
-		q.setParameters(idAnaquel);
-		return (ReservaHabitacion) q.executeUnique();
-	}
+//	public ReservaHabitacion darReservaHabitacionPorId (PersistenceManager pm, long idAnaquel) 
+//	{
+//		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaReservaHabitacion () + " WHERE id= ? ");
+//		q.setResultClass(ReservaHabitacion.class);
+//		q.setParameters(idAnaquel);
+//		return (ReservaHabitacion) q.executeUnique();
+//	}
 }

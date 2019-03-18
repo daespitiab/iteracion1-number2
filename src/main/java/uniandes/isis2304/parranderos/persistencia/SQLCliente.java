@@ -59,11 +59,11 @@ public class SQLCliente {
 	 * @param idBar - El identificador del bar
 	 * @return El objeto BAR que tiene el identificador dado
 	 */
-	public Cliente darClientePorId (PersistenceManager pm, long idAnaquel) 
-	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaClientes () + " WHERE id= ? ");
-		q.setResultClass(Cliente.class);
-		q.setParameters(idAnaquel);
-		return (Cliente) q.executeUnique();
-	}
+//	public Cliente darClientePorId (PersistenceManager pm, long idAnaquel) 
+//	{
+//		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaClientes () + " WHERE id= ? ");
+//		q.setResultClass(Cliente.class);
+//		q.setParameters(idAnaquel);
+//		return (Cliente) q.executeUnique();
+//	}
 }

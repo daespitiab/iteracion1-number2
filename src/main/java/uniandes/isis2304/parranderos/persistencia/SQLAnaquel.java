@@ -59,11 +59,11 @@ public class SQLAnaquel {
 	 * @param idBar - El identificador del bar
 	 * @return El objeto BAR que tiene el identificador dado
 	 */
-	public Anaquel darSupermercadoPorId (PersistenceManager pm, long idAnaquel) 
-	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaAnaqueles () + " WHERE id= ? ");
-		q.setResultClass(Anaquel.class);
-		q.setParameters(idAnaquel);
-		return (Anaquel) q.executeUnique();
-	}
+//	public Anaquel darSupermercadoPorId (PersistenceManager pm, long idAnaquel) 
+//	{
+//		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaAnaqueles () + " WHERE id= ? ");
+//		q.setResultClass(Anaquel.class);
+//		q.setParameters(idAnaquel);
+//		return (Anaquel) q.executeUnique();
+//	}
 }

@@ -59,12 +59,13 @@ public class SQLUsuario {
 	 * @param idBar - El identificador del bar
 	 * @return El objeto BAR que tiene el identificador dado
 	 */
-	public Usuario darUsuarioPorId (PersistenceManager pm, long idAnaquel) 
-	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaUsuarios () + " WHERE id= ? ");
-		q.setResultClass(Usuario.class);
-		q.setParameters(idAnaquel);
-		return (Usuario) q.executeUnique();
-	}
-	
+//	public Usuario darGerentePorId (PersistenceManager pm, long idAnaquel) 
+//	{
+//		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaUsuarios () + " WHERE id= ? ");
+//		q.setResultClass(Usuario.class);
+//		q.setParameters(idAnaquel);
+//		return (Usuario) q.executeUnique();
+//	}
+//	
+
 }

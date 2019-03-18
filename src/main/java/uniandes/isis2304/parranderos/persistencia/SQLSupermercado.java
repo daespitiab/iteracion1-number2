@@ -52,18 +52,13 @@ public class SQLSupermercado {
 	}
 
 
-	/**
-	 * Crea y ejecuta la sentencia SQL para encontrar la información de UN BAR de la 
-	 * base de datos de Parranderos, por su identificador
-	 * @param pm - El manejador de persistencia
-	 * @param idBar - El identificador del bar
-	 * @return El objeto BAR que tiene el identificador dado
-	 */
-	public Supermercado darSupermercadoPorId (PersistenceManager pm, long idSupermercado) 
-	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaSupermercado () + " WHERE id= ? ");
-		q.setResultClass(Supermercado.class);
-		q.setParameters(idSupermercado);
-		return (Supermercado) q.executeUnique();
-	}
+
+//	public Supermercado darSupermercadoPorId (PersistenceManager pm, long idSupermercado) 
+//	{
+//		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaProductoRestaurante () + " WHERE id= ? ");
+//		q.setResultClass(Supermercado.class);
+//		q.setParameters(idSupermercado);
+//		return (Supermercado) q.executeUnique();
+//	}
+
 }
