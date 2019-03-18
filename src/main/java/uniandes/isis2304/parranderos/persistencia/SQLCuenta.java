@@ -29,7 +29,7 @@ public class SQLCuenta {
 	 * Constructor
 	 * @param pp - El Manejador de persistencia de la aplicación
 	 */
-	public SQLCliente (PersistenciaHotelAndes pp)
+	public SQLCuenta (PersistenciaHotelAndes pp)
 	{
 		this.pp = pp;
 	}
